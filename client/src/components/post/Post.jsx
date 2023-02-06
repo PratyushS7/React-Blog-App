@@ -1,36 +1,36 @@
 import "./post.css"
+import {Link} from "react-router-dom"
 
-export default function Post() {
+export default function Post({post}) {
   return (
     <div className="post">
+        {post.photo &&  (
         <img
             className="postImg" 
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTywgfQlbqDSQUzVmIJRjnvvn2ruS3UvoGDyA&usqp=CAU"
+            src={post.photo}
             alt=""       
         />
+        )}
         <div className="postInfo">
             <div className="postCats">
-                <span className="postCat">Music</span>
-                <span className="postCat">Life</span>
+                {
+                    post.categories.map(c => (
+                        <span className="postCat">{c.name}</span>
+                    ))
+                } 
             </div>
-            <span className="postTitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            </span>
+            <Link to={`/post/${post._id}`} className="link">
+                <span className="postTitle">
+                    {post.title} 
+                </span>
+            </Link>
             <hr/>
             <span className="postDate">
-                1 hour ago
+                {new Date(post.createdAt).toDateString()}
             </span>
         </div>
         <p className="postDesc">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum iste 
-            iure magnam voluptas quam enim, veniam, eveniet deserunt veritatis consequuntur 
-            facilis consequatur voluptates quaerat tenetur excepturi nihil ratione ex rem?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum iste 
-            iure magnam voluptas quam enim, veniam, eveniet deserunt veritatis consequuntur 
-            facilis consequatur voluptates quaerat tenetur excepturi nihil ratione ex rem?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum iste 
-            iure magnam voluptas quam enim, veniam, eveniet deserunt veritatis consequuntur 
-            facilis consequatur voluptates quaerat tenetur excepturi nihil ratione ex rem?
+            {post.desc}
         </p>
     </div>
   )
