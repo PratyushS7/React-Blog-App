@@ -4,6 +4,7 @@ import Posts from "../../components/posts/Posts"
 import Sidebar from "../../components/sidebar/Sidebar"
 import axios from "axios"
 import "./home.css"
+import React from 'react';
 import { useLocation } from "react-router-dom";
 
 export default function Home() {

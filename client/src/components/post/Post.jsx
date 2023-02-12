@@ -1,13 +1,16 @@
 import "./post.css"
 import {Link} from "react-router-dom"
+import React from 'react';
 
 export default function Post({post}) {
+  const PF = "http://localhost:5001/images/";
+  console.log(post.photo);
   return (
     <div className="post">
         {post.photo &&  (
         <img
             className="postImg" 
-            src={post.photo}
+            src={ PF + post.photo }
             alt=""       
         />
         )}

@@ -24,6 +24,12 @@
     flex-direction: column;
 }
 
+.loginButton:disabled
+{
+    cursor: not-allowed;
+    background-color: lightcoral;
+}
+
 .loginForm > label
 {
     margin: 10px 0;
